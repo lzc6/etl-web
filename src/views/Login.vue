@@ -1,6 +1,6 @@
 <template>
   <el-form :model="form"  ref="form" label-position="left" label-width="0px" class="demo-ruleForm login-container">
-    <h3 class="title">PICC肇庆提数系统</h3>
+    <h3 class="title">PICC人力信息系统</h3>
     <el-form-item prop="account">
       <el-input type="text" v-model="form.gh" auto-complete="off" placeholder="工号"></el-input>
     </el-form-item>
@@ -40,9 +40,10 @@ import { Message } from 'element-ui';
         });
         // http://56.145.32.54:8081
         // http://56.145.32.63:8080
-          // this.$http.post('http://56.145.32.63:8080/login/check',this.form,{ emulateJSON: true }).then(
+          // this.$http.post('http://56.145.32.63:8084/login/check',this.form,{ emulateJSON: true }).then(
           this.$http.post('http://56.145.32.32:8082/login/check',this.form,{ emulateJSON: true }).then(
               response =>{
+               
                   this.code = response.data.code;
                   this.name = response.data.data;
                   this.depflag = response.data.data2;
@@ -68,7 +69,7 @@ import { Message } from 'element-ui';
                     }
 
                     this.$store.commit('login',pare);
-                    this.$router.push({name: 'home'})
+                    this.$router.push({name: 'chome'})
                   }else{
                     loading.close();
                       this.$message.error({
